@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Pokecard } from '../Pokecard/Pokecard';
+import { clsx } from 'clsx';
 
 type DexProps = {
   dex: Array<CharType>;
-  logger: (str: string) => string;
+  isWinner: boolean;
+  totalExp: number;
 };
 
 type CharType = {
-  id: number;
+  id: number | string;
   name: string;
   type: string;
   base_experience: number;
@@ -15,20 +17,28 @@ type CharType = {
 
 class Pokedex extends Component<DexProps> {
   render(): React.ReactNode {
-    const { dex, logger } = this.props;
-    logger('test');
+    const { dex, isWinner, totalExp } = this.props;
+
     return (
-      <div className="flex flex-col justify-center">
-        <h1 className="text-red-500 font-bold text-center text-3xl  uppercase mt-12">
-          Pokedex
+      <div className="h-80">
+        <h1
+          className={`${clsx(
+            isWinner && 'text-emerald-500',
+            'text-red-500',
+          )} font-bold text-center text-3xl  uppercase`}
+        >
+          {isWinner ? 'Winning Hand' : 'Losing Hand'}
         </h1>
-        <div className="flex flex-wrap items-start justify-center h-fuh-full">
+        <p className="text-center text-xs font-light uppercase">
+          Total Experience: {totalExp}
+        </p>
+        <div className="flex  items-start justify-evenly  h-[100px]">
           {dex.map((dx_char: CharType, idx) => {
             return (
               <li className="list-none">
                 <Pokecard
                   type={dx_char.type}
-                  id={dx_char.id}
+                  id={Number(dx_char.id)}
                   key={idx}
                   name={dx_char.name}
                   exp={dx_char.base_experience}
