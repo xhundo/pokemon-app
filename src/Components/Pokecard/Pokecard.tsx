@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { padID } from '../../utils/helper';
 
-type Skill = {
-  id: number;
+type SkillProps = {
+  id: number | string;
   name: string;
   type: string;
   exp: number;
 };
 
-class Pokecard extends Component<Skill> {
+class Pokecard extends Component<SkillProps> {
   static defaultProps = {
     id: 4,
     name: 'Charmander',
@@ -16,16 +17,18 @@ class Pokecard extends Component<Skill> {
   };
 
   render(): React.ReactNode {
-    const { id, name, type, exp } = this.props;
+    let { id, name, type, exp } = this.props;
+    id = padID(id as number);
+    console.log(id);
 
     return (
-      <div className="bg-amber-400 m-6 border-4  p-3 border-white border- flex-col  rounded-xl">
+      <div className="from-blue-500 to-green-300 bg-gradient-to-t m-2 p-2 border-4  border-amber-400  flex-col  rounded-xl">
         <p className="text-blue-500 text-center font-bold">{name}</p>
         <img
           className="w-20 h-20 m-4"
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`}
         />
-        <p className="text-red-500 text-center text-xs font-semibold uppercase">{`type: ${type}`}</p>
+        <p className="text-yellow-300 text-center text-xs font-semibold uppercase">{`type: ${type}`}</p>
         <p className="text-white uppercase text-xs font-semibold  mb-2 text-center">
           {' '}
           exp: {exp}
