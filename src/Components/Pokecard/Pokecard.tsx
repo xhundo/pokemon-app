@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-type skill = {
+type Skill = {
   id: number;
   name: string;
   type: string;
   exp: number;
 };
 
-class Pokecard extends Component<skill> {
+class Pokecard extends Component<Skill> {
   render(): React.ReactNode {
     const { id, name, type, exp } = this.props;
 
     return (
-      <div className="bg-slate-400 p-3 rounded-xl">
+      <div className="bg-slate-400 p-3 justify-center flex-col  rounded-xl">
         <p className="text-blue-500 text-center">{name}</p>
         <img
+          className="h-8 w-9 m-0"
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         />
         <p className="text-red-500 text-center">{`type: ${type}`}</p>
