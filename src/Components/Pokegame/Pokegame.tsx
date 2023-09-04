@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Pokedex } from '../Pokedex/Pokedex';
 import type { CharType } from '../../utils/types';
+import { getTotal } from '../../utils/helper';
 
 type DexProps = {
   dex: Array<CharType>;
@@ -59,16 +60,8 @@ class Pokegame extends Component<DexProps> {
     };
 
     let _dex = assign_dex(dex);
-    const dexV1_exp = _dex.dex_group_one.reduce(
-      (acc: number, dx_char: CharType) => acc + dx_char.base_experience,
-      0,
-    );
-
-    const dexV2_exp = _dex.dex_group_two.reduce(
-      (acc: number, dx_char: CharType) => acc + dx_char.base_experience,
-      0,
-    );
-
+    const dexV1_exp = getTotal(_dex, 'dex_group_one');
+    const dexV2_exp = getTotal(_dex, 'dex_group_two');
     const isWin = getWinner({ total_dexV1: dexV1_exp, total_dexV2: dexV2_exp });
 
     console.log(_dex);
