@@ -3,8 +3,10 @@ import { Pokedex } from './Components/Pokedex/Pokedex';
 
 class App extends Component {
   render(): React.ReactNode {
+    let res;
+
     return (
-      <div>
+      <div className="bg-blue-400 w-full h-[663px]">
         <Pokedex
           dex={[
             {
@@ -56,6 +58,10 @@ class App extends Component {
               base_experience: 65,
             },
           ]}
+          logger={(str: string) => {
+            console.log(str);
+            return str;
+          }}
         />
       </div>
     );
