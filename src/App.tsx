@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Pokedex } from './Components/Pokedex/Pokedex';
+import { Pokegame } from './Components/Pokegame/Pokegame';
 
 class App extends Component {
   render(): React.ReactNode {
-    let res;
-
     return (
-      <div className="bg-blue-400 w-full h-[663px]">
-        <Pokedex
+      <div className="bg-amber-200 w-full flex justify-evenly items-center max-w-screen min-h-screen pt-4">
+        <Pokegame
           dex={[
             {
               id: 4,
