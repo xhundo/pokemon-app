@@ -25,7 +25,7 @@ class Pokecard extends Component<SkillProps> {
       <div className="from-blue-500 to-green-300 bg-gradient-to-t m-2 p-2 border-4  border-amber-400  flex-col  rounded-xl">
         <p className="text-blue-500 text-center font-bold">{name}</p>
         <img
-          className="w-20 h-20 m-4"
+          className="w-20 h-20 m-4 hover:animate-ping"
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`}
         />
         <p className="text-yellow-300 text-center text-xs font-semibold uppercase">{`type: ${type}`}</p>
